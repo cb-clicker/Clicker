@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+#clicker {
+    margin-top: 50px;
+}
+
+#click-button {
+    width: 100px;
+    cursor: pointer;
+}
+
+#menu {
+    margin-top: 20px;
+}
+
+#menu img {
+    width: 50px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.menu-interface {
+    display: none;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+}
+
+#shop, #exchange {
+    position: absolute;
+    top: 100px;
+    right: 50px;
+}
