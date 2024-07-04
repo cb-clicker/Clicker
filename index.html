@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="clicker">
+        <img src="images/cursor.png" id="click-button" alt="Click">
+        <p>Кликов: <span id="click-count">0</span></p>
+    </div>
+    <div id="menu">
+        <img src="images/shop.png" id="shop-button" alt="Shop">
+        <img src="images/exchange.png" id="exchange-button" alt="Exchange">
+    </div>
+    <div id="shop" class="menu-interface">
+        <h2>Магазин</h2>
+        <p>Купить новый аватар (увеличивает клики на 1):</p>
+        <button id="buy-avatar">Купить за <span id="avatar-price">1000</span> черр</button>
+    </div>
+    <div id="exchange" class="menu-interface">
+        <h2>Обмен валют</h2>
+        <p>cursor.png 10 = 1 cherru.png</p>
+        <button id="exchange-button">Обменять</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
