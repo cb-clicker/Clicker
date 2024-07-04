@@ -8,15 +8,9 @@ body {
     padding: 0;
 }
 
-#header {
-    width: 100%;
-    text-align: right;
-    padding: 10px;
-    background-color: #ff99cc;
-}
-
 #clicker {
     margin-top: 50px;
+    text-align: center;
 }
 
 #click-avatar {
@@ -40,6 +34,7 @@ body {
     border: 1px solid #ccc;
     padding: 10px;
     background-color: #fff;
+    border-radius: 15px; /* Закругленные углы */
 }
 
 #shop, #exchange {
@@ -51,4 +46,11 @@ body {
 .icon {
     width: 20px;
     vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+    #shop, #exchange {
+        top: auto;
+        bottom: 50px;
+    }
 }
