@@ -1,6 +1,6 @@
-let clickCount = 0;
-let cherruCount = 0;
-let avatarPrice = 1000;
+let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
+let cherruCount = parseInt(localStorage.getItem('cherruCount')) || 0;
+let avatarPrice = parseInt(localStorage.getItem('avatarPrice')) || 1000;
 
 const clickAvatar = document.getElementById('click-avatar');
 const clickCountDisplay = document.getElementById('click-count');
@@ -11,11 +11,16 @@ const shopInterface = document.getElementById('shop');
 const exchangeInterface = document.getElementById('exchange');
 const buyAvatarButton = document.getElementById('buy-avatar');
 const avatarPriceDisplay = document.getElementById('avatar-price');
-const exchangeActionButton = document.getElementById('exchange-button');
+const exchangeActionButton = document.getElementById('exchange-action-button');
+
+clickCountDisplay.textContent = clickCount;
+cherruCountDisplay.textContent = cherruCount;
+avatarPriceDisplay.textContent = avatarPrice;
 
 clickAvatar.addEventListener('click', () => {
     clickCount++;
     clickCountDisplay.textContent = clickCount;
+    localStorage.setItem('clickCount', clickCount);
 });
 
 shopButton.addEventListener('click', () => {
@@ -33,6 +38,9 @@ buyAvatarButton.addEventListener('click', () => {
         avatarPrice += 1000;
         avatarPriceDisplay.textContent = avatarPrice;
         cherruCountDisplay.textContent = cherruCount;
+        localStorage.setItem('cherruCount', cherruCount);
+        localStorage.setItem('avatarPrice', avatarPrice);
+        localStorage.setItem('clickCount', clickCount);
     }
 });
 
@@ -42,6 +50,8 @@ exchangeActionButton.addEventListener('click', () => {
         cherruCount += 1;
         clickCountDisplay.textContent = clickCount;
         cherruCountDisplay.textContent = cherruCount;
+        localStorage.setItem('clickCount', clickCount);
+        localStorage.setItem('cherruCount', cherruCount);
     }
 });
 
