@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clicker</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/icon.png" type="image/png" sizes="512x512">
 </head>
 <body>
+    <div id="header">
+        <p>Черр: <span id="cherru-count">0</span></p>
+    </div>
     <div id="clicker">
-        <img src="images/cursor.png" id="click-button" alt="Click">
+        <img src="images/avatar1.png" id="click-avatar" alt="Avatar">
         <p>Кликов: <span id="click-count">0</span></p>
     </div>
     <div id="menu">
@@ -22,7 +26,7 @@
     </div>
     <div id="exchange" class="menu-interface">
         <h2>Обмен валют</h2>
-        <p>cursor.png 10 = 1 cherru.png</p>
+        <p><img src="images/cursor.png" alt="Cursor" class="icon"> 10 = 1 <img src="images/cherru.png" alt="Cherru" class="icon"></p>
         <button id="exchange-button">Обменять</button>
     </div>
     <script src="script.js"></script>
