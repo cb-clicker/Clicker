@@ -3,14 +3,23 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: #ffcccc;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    width: 100%;
+    text-align: right;
+    padding: 10px;
+    background-color: #ff99cc;
 }
 
 #clicker {
     margin-top: 50px;
 }
 
-#click-button {
+#click-avatar {
     width: 100px;
     cursor: pointer;
 }
@@ -37,4 +46,9 @@ body {
     position: absolute;
     top: 100px;
     right: 50px;
+}
+
+.icon {
+    width: 20px;
+    vertical-align: middle;
 }
