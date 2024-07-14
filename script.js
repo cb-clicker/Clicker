@@ -15,66 +15,72 @@ const avatarPriceDisplay = document.getElementById('avatar-price');
 const exchangeActionButton = document.getElementById('exchange-action-button');
 const exchangeAllButton = document.getElementById('exchange-all-button');
 
-clickCountDisplay.textContent = clickCount;
-cherruCountDisplay.textContent = cherruCount;
-avatarPriceDisplay.textContent = avatarPrice;
-
-clickAvatar.addEventListener('click', () => {
-    clickCount += clickIncrement;
+function updateDisplay() {
     clickCountDisplay.textContent = clickCount;
+    cherruCountDisplay.textContent = cherruCount;
+    avatarPriceDisplay.textContent = avatarPrice;
+}
+
+function saveData() {
     localStorage.setItem('clickCount', clickCount);
+    localStorage.setItem('cherruCount', cherruCount);
+    localStorage.setItem('avatarPrice', avatarPrice);
+    localStorage.setItem('clickIncrement', clickIncrement);
+}
+
+updateDisplay();
+
+clickAvatar?.addEventListener('click', () => {
+    clickCount += clickIncrement;
+    updateDisplay();
+    saveData();
 });
 
-shopButton.addEventListener('click', () => {
+shopButton?.addEventListener('click', () => {
     toggleInterface(shopInterface);
 });
 
-exchangeButton.addEventListener('click', () => {
+exchangeButton?.addEventListener('click', () => {
     toggleInterface(exchangeInterface);
 });
 
-buyAvatarButton.addEventListener('click', () => {
+buyAvatarButton?.addEventListener('click', () => {
     if (cherruCount >= avatarPrice) {
         cherruCount -= avatarPrice;
-        clickIncrement += 1;  // Увеличиваем клики на 1
+        clickIncrement += 1;
         avatarPrice += 1000;
-        avatarPriceDisplay.textContent = avatarPrice;
-        cherruCountDisplay.textContent = cherruCount;
-        localStorage.setItem('cherruCount', cherruCount);
-        localStorage.setItem('avatarPrice', avatarPrice);
-        localStorage.setItem('clickIncrement', clickIncrement);
+        updateDisplay();
+        saveData();
     }
 });
 
-exchangeActionButton.addEventListener('click', () => {
+exchangeActionButton?.addEventListener('click', () => {
     if (clickCount >= 10) {
         clickCount -= 10;
         cherruCount += 1;
-        clickCountDisplay.textContent = clickCount;
-        cherruCountDisplay.textContent = cherruCount;
-        localStorage.setItem('clickCount', clickCount);
-        localStorage.setItem('cherruCount', cherruCount);
+        updateDisplay();
+        saveData();
     }
 });
 
-exchangeAllButton.addEventListener('click', () => {
+exchangeAllButton?.addEventListener('click', () => {
     const exchangeableCherrus = Math.floor(clickCount / 10);
     if (exchangeableCherrus > 0) {
         clickCount -= exchangeableCherrus * 10;
         cherruCount += exchangeableCherrus;
-        clickCountDisplay.textContent = clickCount;
-        cherruCountDisplay.textContent = cherruCount;
-        localStorage.setItem('clickCount', clickCount);
-        localStorage.setItem('cherruCount', cherruCount);
+        updateDisplay();
+        saveData();
     }
 });
 
 function toggleInterface(interfaceElement) {
-    if (interfaceElement.style.display === 'block') {
-        interfaceElement.style.display = 'none';
-    } else {
-        shopInterface.style.display = 'none';
-        exchangeInterface.style.display = 'none';
-        interfaceElement.style.display = 'block';
+    if (interfaceElement) {
+        if (interfaceElement.style.display === 'block') {
+            interfaceElement.style.display = 'none';
+        } else {
+            shopInterface.style.display = 'none';
+            exchangeInterface.style.display = 'none';
+            interfaceElement.style.display = 'block';
+        }
     }
 }
