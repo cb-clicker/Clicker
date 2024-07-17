@@ -7,7 +7,18 @@ let autoClickerInterval = null;
 let autoClickerIntervalTime = parseInt(localStorage.getItem('autoClickerIntervalTime')) || 1000; // Интервал автокликера
 
 // Элементы интерфейса (оставьте существующие)
-// ...
+const clickAvatar = document.getElementById('click-avatar');
+const clickCountDisplay = document.getElementById('click-count');
+const cherruCountDisplay = document.getElementById('cherru-count');
+const shopButton = document.getElementById('shop-button');
+const exchangeButton = document.getElementById('exchange-button');
+const shopInterface = document.getElementById('shop');
+const exchangeInterface = document.getElementById('exchange');
+const buyAvatarButton = document.getElementById('buy-avatar');
+const avatarPriceDisplay = document.getElementById('avatar-price');
+const exchangeActionButton = document.getElementById('exchange-action-button');
+const exchangeAllButton = document.getElementById('exchange-all-button');
+const autoClickerButton = document.getElementById('auto-clicker-button'); // Кнопка автокликера
 
 // Покупка автокликера
 autoClickerButton?.addEventListener('click', () => {
