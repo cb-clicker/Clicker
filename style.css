@@ -65,3 +65,17 @@ body {
     display: block;
     margin: 10px 0;
 }
+
+#autoclicker-toggle {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#autoclicker-toggle:hover {
+    background-color: #45a049;
+}
