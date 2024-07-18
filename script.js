@@ -38,6 +38,14 @@ function updateDisplay() {
         autoclickerControls.style.display = 'block';
         autoclickerShop.style.display = 'none';
         autoclickerUpgrade.style.display = 'block';
+        
+        if (isAutoclickerActive) {
+            autoclickerToggle.classList.remove('autoclicker-off');
+            autoclickerToggle.classList.add('autoclicker-on');
+        } else {
+            autoclickerToggle.classList.remove('autoclicker-on');
+            autoclickerToggle.classList.add('autoclicker-off');
+        }
     } else {
         autoclickerControls.style.display = 'none';
         autoclickerShop.style.display = 'block';
