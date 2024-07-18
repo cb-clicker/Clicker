@@ -6,6 +6,7 @@ let autoclickerPrice = parseInt(localStorage.getItem('autoclickerPrice')) || 100
 let autoclickerUpgradePrice = parseInt(localStorage.getItem('autoclickerUpgradePrice')) || 100;
 let autoclickerInterval = parseInt(localStorage.getItem('autoclickerInterval')) || 60;
 let isAutoclickerActive = localStorage.getItem('isAutoclickerActive') === 'true';
+let hasAutoclicker = localStorage.getItem('hasAutoclicker') === 'true';
 
 const clickAvatar = document.getElementById('click-avatar');
 const clickCountDisplay = document.getElementById('click-count');
@@ -43,6 +44,7 @@ function saveData() {
     localStorage.setItem('autoclickerUpgradePrice', autoclickerUpgradePrice);
     localStorage.setItem('autoclickerInterval', autoclickerInterval);
     localStorage.setItem('isAutoclickerActive', isAutoclickerActive);
+    localStorage.setItem('hasAutoclicker', hasAutoclicker);
 }
 
 updateDisplay();
@@ -91,9 +93,9 @@ exchangeAllButton?.addEventListener('click', () => {
 });
 
 document.getElementById('buy-autoclicker')?.addEventListener('click', () => {
-    if (cherruCount >= autoclickerPrice) {
+    if (cherruCount >= autoclickerPrice && !hasAutoclicker) {
         cherruCount -= autoclickerPrice;
-        autoclickerPrice += 100;
+        hasAutoclicker = true;
         isAutoclickerActive = true;
         updateDisplay();
         saveData();
@@ -102,7 +104,7 @@ document.getElementById('buy-autoclicker')?.addEventListener('click', () => {
 });
 
 document.getElementById('upgrade-autoclicker')?.addEventListener('click', () => {
-    if (cherruCount >= autoclickerUpgradePrice && autoclickerInterval > 1) {
+    if (cherruCount >= autoclickerUpgradePrice && autoclickerInterval > 1 && hasAutoclicker) {
         cherruCount -= autoclickerUpgradePrice;
         autoclickerUpgradePrice += 100;
         autoclickerInterval -= 1;
@@ -113,20 +115,22 @@ document.getElementById('upgrade-autoclicker')?.addEventListener('click', () => 
 });
 
 autoclickerToggle?.addEventListener('click', () => {
-    isAutoclickerActive = !isAutoclickerActive;
-    updateDisplay();
-    saveData();
-    if (isAutoclickerActive) {
-        startAutoclicker();
-    } else {
-        stopAutoclicker();
+    if (hasAutoclicker) {
+        isAutoclickerActive = !isAutoclickerActive;
+        updateDisplay();
+        saveData();
+        if (isAutoclickerActive) {
+            startAutoclicker();
+        } else {
+            stopAutoclicker();
+        }
     }
 });
 
 let autoclickerIntervalId;
 
 function startAutoclicker() {
-    if (isAutoclickerActive) {
+    if (isAutoclickerActive && hasAutoclicker) {
         autoclickerIntervalId = setInterval(() => {
             clickCount += clickIncrement;
             updateDisplay();
@@ -156,8 +160,8 @@ function toggleInterface(interfaceElement) {
     }
 }
 
-// Запускаем автокликер при загрузке страницы, если он был активен
-if (isAutoclickerActive) {
+// Запускаем автокликер при загрузке страницы, если он был активен и куплен
+if (isAutoclickerActive && hasAutoclicker) {
     startAutoclicker();
 }
 
