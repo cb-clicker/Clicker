@@ -34,7 +34,7 @@ body {
     border: 1px solid #ccc;
     padding: 10px;
     background-color: #fff;
-    border-radius: 15px; /* Закругленные углы */
+    border-radius: 15px;
 }
 
 #shop, #exchange {
@@ -53,4 +53,15 @@ body {
         top: auto;
         bottom: 50px;
     }
+}
+
+#autoclicker-toggle {
+    margin-top: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#shop button {
+    display: block;
+    margin: 10px 0;
 }
