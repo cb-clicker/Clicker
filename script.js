@@ -6,6 +6,7 @@ let autoclickerUpgradePrice = parseInt(localStorage.getItem('autoclickerUpgradeP
 let autoclickerInterval = parseInt(localStorage.getItem('autoclickerInterval')) || 60;
 let isAutoclickerActive = localStorage.getItem('isAutoclickerActive') === 'true';
 let hasAutoclicker = localStorage.getItem('hasAutoclicker') === 'true';
+let avatarLevel = parseInt(localStorage.getItem('avatarLevel')) || 1;
 
 const clickAvatar = document.getElementById('click-avatar');
 const clickCountDisplay = document.getElementById('click-count');
@@ -25,6 +26,8 @@ const autoclickerStatus = document.getElementById('autoclicker-status');
 const autoclickerControls = document.getElementById('autoclicker-controls');
 const autoclickerShop = document.getElementById('autoclicker-shop');
 const autoclickerUpgrade = document.getElementById('autoclicker-upgrade');
+const avatarUpgradeText = document.getElementById('avatar-upgrade-text');
+const avatarSoldOut = document.getElementById('avatar-sold-out');
 
 function updateDisplay() {
     clickCountDisplay.textContent = clickCount;
@@ -33,6 +36,14 @@ function updateDisplay() {
     autoclickerUpgradePriceDisplay.textContent = autoclickerUpgradePrice;
     autoclickerIntervalDisplay.textContent = autoclickerInterval;
     autoclickerStatus.textContent = isAutoclickerActive ? 'Включен' : 'Выключен';
+    
+    clickAvatar.src = `images/avatar${avatarLevel}.png`;
+    
+    if (avatarLevel >= 20) {
+        buyAvatarButton.style.display = 'none';
+        avatarUpgradeText.classList.add('strikethrough');
+        avatarSoldOut.style.display = 'block';
+    }
     
     if (hasAutoclicker) {
         autoclickerControls.style.display = 'block';
@@ -62,6 +73,7 @@ function saveData() {
     localStorage.setItem('autoclickerInterval', autoclickerInterval);
     localStorage.setItem('isAutoclickerActive', isAutoclickerActive);
     localStorage.setItem('hasAutoclicker', hasAutoclicker);
+    localStorage.setItem('avatarLevel', avatarLevel);
 }
 
 updateDisplay();
@@ -81,10 +93,11 @@ exchangeButton?.addEventListener('click', () => {
 });
 
 buyAvatarButton?.addEventListener('click', () => {
-    if (cherruCount >= avatarPrice) {
+    if (cherruCount >= avatarPrice && avatarLevel < 20) {
         cherruCount -= avatarPrice;
         clickIncrement += 1;
         avatarPrice += 1000;
+        avatarLevel += 1;
         updateDisplay();
         saveData();
     }
