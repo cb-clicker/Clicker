@@ -88,3 +88,7 @@ body {
 .autoclicker-off:hover {
     background-color: #f0f0f0;
 }
+
+.strikethrough {
+    text-decoration: line-through;
+}
