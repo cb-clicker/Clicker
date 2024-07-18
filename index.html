@@ -12,8 +12,10 @@
         <img src="images/avatar1.png" id="click-avatar" alt="Avatar">
         <p>Кликов: <span id="click-count">0</span></p>
         <p>Черр: <span id="cherru-count">0</span></p>
-        <p>Автокликер: <span id="autoclicker-status">Выключен</span></p>
-        <button id="autoclicker-toggle">Включить/Выключить автокликер</button>
+        <div id="autoclicker-controls" style="display: none;">
+            <p>Автокликер: <span id="autoclicker-status">Выключен</span></p>
+            <button id="autoclicker-toggle">Включить/Выключить автокликер</button>
+        </div>
     </div>
     <div id="menu">
         <img src="images/shop.png" id="shop-button" alt="Shop">
@@ -24,10 +26,15 @@
         <p>Купить новый аватар (увеличивает клики на 1):</p>
         <button id="buy-avatar">Купить за <span id="avatar-price">1000</span> черр</button>
         
-        <h3>Автокликер</h3>
-        <p>Интервал: <span id="autoclicker-interval">60</span> сек</p>
-        <button id="buy-autoclicker">Купить за <span id="autoclicker-price">100</span> черр</button>
-        <button id="upgrade-autoclicker">Улучшить за <span id="autoclicker-upgrade-price">100</span> черр</button>
+        <div id="autoclicker-shop">
+            <h3>Автокликер</h3>
+            <button id="buy-autoclicker">Купить автокликер за 5000 черр</button>
+        </div>
+        
+        <div id="autoclicker-upgrade" style="display: none;">
+            <p>Интервал автокликера: <span id="autoclicker-interval">60</span> сек</p>
+            <button id="upgrade-autoclicker">Улучшить за <span id="autoclicker-upgrade-price">100</span> черр</button>
+        </div>
     </div>
     <div id="exchange" class="menu-interface">
         <h2>Обмен валют</h2>
