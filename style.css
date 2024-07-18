@@ -59,6 +59,10 @@ body {
     margin-top: 10px;
     cursor: pointer;
     user-select: none;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 #shop button {
@@ -66,16 +70,21 @@ body {
     margin: 10px 0;
 }
 
-#autoclicker-toggle {
-    padding: 10px;
+.autoclicker-on {
     background-color: #4CAF50;
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
 }
 
-#autoclicker-toggle:hover {
+.autoclicker-off {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+}
+
+.autoclicker-on:hover {
     background-color: #45a049;
+}
+
+.autoclicker-off:hover {
+    background-color: #f0f0f0;
 }
